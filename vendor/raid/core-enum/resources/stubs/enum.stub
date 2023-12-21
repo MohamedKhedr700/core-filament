@@ -1,0 +1,9 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Raid\Core\Enum\Models\Enum;
+
+class $CLASS_NAME$ extends Enum
+{
+}

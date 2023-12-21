@@ -1,0 +1,10 @@
+<?php
+
+namespace $NAMESPACE$;
+
+use Raid\Core\Enum\Traits\Enum\ConstEnum;
+
+enum $CLASS_NAME$
+{
+    use ConstEnum;
+}

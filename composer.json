@@ -1,0 +1,44 @@
+{
+    "name": "raid/core-filament",
+    "description": "Raid Core Filament Package",
+    "type": "library",
+    "license": "MIT",
+    "version": "1.0.0",
+    "minimum-stability": "dev",
+    "keywords": [
+        "laravel",
+        "raid",
+        "core",
+        "filament"
+    ],
+    "require": {
+        "php": "^8.2",
+        "raid/core-command": "dev-main"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.10"
+    },
+    "autoload": {
+        "psr-4": {
+            "Raid\\Core\\Filament\\": "src"
+        }
+    },
+    "scripts": {
+        "pint": [
+            "./vendor/bin/pint --config pint.json "
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Raid\\Core\\Auth\\Providers\\FilamentServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "mohamed_khedr",
+            "email": "mohamedkhedr700@gmail.com"
+        }
+    ]
+}
