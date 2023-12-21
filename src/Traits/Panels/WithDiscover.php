@@ -13,13 +13,11 @@ trait WithDiscover
     {
         foreach (static::getModules() as $module) {
 
-            $path = $this->getPanelPath($module, 'Resources');
+            $in = $this->getInPath($module, 'Resources');
 
-//            $in = app_path("Modules/{$module}/Http/Filament/Resources");
+            $for = $this->getForPath($module, 'Resources');
 
-//            $for = "Modules\\{$module}\\Http\\Filament\\Resources";
-
-            $panel->discoverResources(in: $path, for: $path);
+            $panel->discoverResources(in: $in, for: $for);
         }
     }
 

@@ -5,23 +5,44 @@ namespace Raid\Core\Filament\Traits\Panels;
 trait WithPath
 {
     /**
-     * The panel path.
+     * The panel in path.
      */
-    protected string $path = 'Http/Filament';
+    protected string $inPath = 'Http/Filament';
 
     /**
-     * Get the panel path.
+     * The panel for path.
      */
-    public function path(): string
+    protected string $forPath = 'Http\\Filament';
+
+    /**
+     * Get a panel in path.
+     */
+    public function inPath(): string
     {
-        return $this->path;
+        return $this->inPath;
     }
 
     /**
-     * Get the panel path.
+     * Get a panel for path.
      */
-    public function getPanelPath(string $module, string $path = ''): string
+    public function forPath(): string
     {
-        return module_path($module, $this->path()."/{$path}");
+        return $this->forPath;
+    }
+
+    /**
+     * Get a panel in path.
+     */
+    public function getInPath(string $module, string $dir = ''): string
+    {
+        return module_path($module, $this->inPath()."/{$dir}");
+    }
+
+    /**
+     * Get a panel for path.
+     */
+    public function getForPath(string $module, string $dir = ''): string
+    {
+        return 'Modules\\'.$module.'\\'.$this->forPath()."\\".$dir;
     }
 }
