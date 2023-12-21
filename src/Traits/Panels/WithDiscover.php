@@ -27,9 +27,9 @@ trait WithDiscover
     protected function discoverPages(Panel $panel): void
     {
         foreach (static::getModules() as $module) {
-            $in = app_path("Modules/{$module}/Http/Filament/Pages");
+            $in = $this->getInPath($module, 'Pages');
 
-            $for = "Modules\\{$module}\\Http\\Filament\\Pages";
+            $for = $this->getForPath($module, 'Pages');
 
             $panel->discoverPages(in: $in, for: $for);
         }
@@ -41,9 +41,9 @@ trait WithDiscover
     protected function discoverWidgets(Panel $panel): void
     {
         foreach (static::getModules() as $module) {
-            $in = app_path("Modules/{$module}/Http/Filament/Widgets");
+            $in = $this->getInPath($module, 'Widgets');
 
-            $for = "Modules\\{$module}\\Http\\Filament\\Widgets";
+            $for = $this->getForPath($module, 'Widgets');
 
             $panel->discoverWidgets(in: $in, for: $for);
         }
