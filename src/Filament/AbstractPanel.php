@@ -18,30 +18,19 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Raid\Core\Filament\Traits\Panels\WithDiscover;
+use Raid\Core\Filament\Traits\Panels\WithModule;
+use Raid\Core\Filament\Traits\Panels\WithPath;
 
 class AbstractPanel extends PanelProvider
 {
-    /**
-     * Registered modules.
-     */
-    protected static array $modules;
+    use WithDiscover;
+    use WithPath;
+    use WithModule;
 
     /**
-     * Get registered modules.
+     * Get the panel.
      */
-    public static function getModules(): array
-    {
-        if (! isset(static::$modules)) {
-            $modules = json_decode(File::get(base_path('modules_statuses.json')), true);
-
-            static::$modules = array_keys(array_filter($modules, function (bool $status) {
-                return $status;
-            }));
-        }
-
-        return static::$modules;
-    }
-
     public function panel(Panel $panel): Panel
     {
         $this->discoverResources($panel);
@@ -75,47 +64,5 @@ class AbstractPanel extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ]);
-    }
-
-    /**
-     * Discover resources.
-     */
-    protected function discoverResources(Panel $panel): void
-    {
-        foreach (static::getModules() as $module) {
-            $in = app_path("Modules/{$module}/Http/Filament/Resources");
-
-            $for = "Modules\\{$module}\\Http\\Filament\\Resources";
-
-            $panel->discoverResources(in: $in, for: $for);
-        }
-    }
-
-    /**
-     * Discover pages.
-     */
-    protected function discoverPages(Panel $panel): void
-    {
-        foreach (static::getModules() as $module) {
-            $in = app_path("Modules/{$module}/Http/Filament/Pages");
-
-            $for = "Modules\\{$module}\\Http\\Filament\\Pages";
-
-            $panel->discoverPages(in: $in, for: $for);
-        }
-    }
-
-    /**
-     * Discover widgets.
-     */
-    protected function discoverWidgets(Panel $panel): void
-    {
-        foreach (static::getModules() as $module) {
-            $in = app_path("Modules/{$module}/Http/Filament/Widgets");
-
-            $for = "Modules\\{$module}\\Http\\Filament\\Widgets";
-
-            $panel->discoverWidgets(in: $in, for: $for);
-        }
     }
 }
