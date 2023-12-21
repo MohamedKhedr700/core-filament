@@ -32,7 +32,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Raid\\Core\\Auth\\Providers\\FilamentServiceProvider"
+                "Raid\\Core\\Filament\\Providers\\FilamentServiceProvider"
             ]
         }
     },
