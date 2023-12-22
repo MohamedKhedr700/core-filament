@@ -33,7 +33,7 @@ class AbstractPanel extends PanelProvider
     /**
      * Prepare the panel.
      */
-    public function preparePanel(Panel $panel): Panel
+    public function defaultPanel(Panel $panel): Panel
     {
         $this->setPanel($panel);
 
@@ -42,6 +42,8 @@ class AbstractPanel extends PanelProvider
         $this->discoverPages($panel);
 
         $this->discoverWidgets($panel);
+
+        return $panel;
 
         return $panel
             ->colors([
