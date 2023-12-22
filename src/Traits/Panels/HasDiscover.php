@@ -4,7 +4,7 @@ namespace Raid\Core\Filament\Traits\Panels;
 
 use Filament\Panel;
 
-trait WithDiscover
+trait HasDiscover
 {
     /**
      * Discover resources.

@@ -4,7 +4,7 @@ namespace Raid\Core\Filament\Traits\Panels;
 
 use Illuminate\Support\Facades\File;
 
-trait WithModule
+trait HasModule
 {
     /**
      * Registered modules.

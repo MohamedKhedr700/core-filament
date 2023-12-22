@@ -2,7 +2,7 @@
 
 namespace Raid\Core\Filament\Traits\Panels;
 
-trait WithPath
+trait HasPath
 {
     /**
      * The panel in path.

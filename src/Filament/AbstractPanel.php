@@ -18,21 +18,25 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Support\Facades\File;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Raid\Core\Filament\Traits\Panels\WithDiscover;
-use Raid\Core\Filament\Traits\Panels\WithModule;
-use Raid\Core\Filament\Traits\Panels\WithPath;
+use Raid\Core\Filament\Traits\Panels\HasDiscover;
+use Raid\Core\Filament\Traits\Panels\HasModule;
+use Raid\Core\Filament\Traits\Panels\HasPanel;
+use Raid\Core\Filament\Traits\Panels\HasPath;
 
 class AbstractPanel extends PanelProvider
 {
-    use WithDiscover;
-    use WithPath;
-    use WithModule;
+    use HasDiscover;
+    use HasModule;
+    use HasPanel;
+    use HasPath;
 
     /**
-     * Get the panel.
+     * Prepare the panel.
      */
-    public function panel(Panel $panel): Panel
+    public function preparePanel(Panel $panel): Panel
     {
+        $this->setPanel($panel);
+
         $this->discoverResources($panel);
 
         $this->discoverPages($panel);
