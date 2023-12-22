@@ -22,8 +22,8 @@ class FilamentServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-//        $this->registerConfig();
-//        $this->registerHelpers();
+        //        $this->registerConfig();
+        //        $this->registerHelpers();
         $this->registerCommands();
     }
 

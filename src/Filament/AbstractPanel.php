@@ -16,19 +16,28 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Routing\Middleware\SubstituteBindings;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
-use Illuminate\Support\Facades\File;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
+use Raid\Core\Filament\Traits\Panels\HasAuthMiddleware;
+use Raid\Core\Filament\Traits\Panels\HasColor;
 use Raid\Core\Filament\Traits\Panels\HasDiscover;
+use Raid\Core\Filament\Traits\Panels\HasMiddleware;
 use Raid\Core\Filament\Traits\Panels\HasModule;
+use Raid\Core\Filament\Traits\Panels\HasPage;
 use Raid\Core\Filament\Traits\Panels\HasPanel;
 use Raid\Core\Filament\Traits\Panels\HasPath;
+use Raid\Core\Filament\Traits\Panels\HasWidget;
 
 class AbstractPanel extends PanelProvider
 {
+    use HasAuthMiddleware;
+    use HasColor;
     use HasDiscover;
+    use HasMiddleware;
     use HasModule;
+    use HasPage;
     use HasPanel;
     use HasPath;
+    use HasWidget;
 
     /**
      * Get the default panel.
@@ -36,6 +45,18 @@ class AbstractPanel extends PanelProvider
     public function defaultPanel(Panel $panel): Panel
     {
         $this->discoverPanel($panel);
+
+        $this->withDefaultColor();
+
+        $this->withDefaultPages();
+
+        $this->withDefaultWidgets();
+
+        $this->withDefaultMiddleware();
+
+        $this->withDefaultAuthMiddleware();
+
+        return $this;
     }
 
     /**
@@ -52,31 +73,5 @@ class AbstractPanel extends PanelProvider
         $this->discoverWidgets($panel);
 
         return $this;
-
-        return $panel
-            ->colors([
-                'primary' => Color::Amber,
-            ])
-            ->pages([
-                Pages\Dashboard::class,
-            ])
-            ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
-            ])
-            ->middleware([
-                EncryptCookies::class,
-                AddQueuedCookiesToResponse::class,
-                StartSession::class,
-                AuthenticateSession::class,
-                ShareErrorsFromSession::class,
-                VerifyCsrfToken::class,
-                SubstituteBindings::class,
-                DisableBladeIconComponents::class,
-                DispatchServingFilamentEvent::class,
-            ])
-            ->authMiddleware([
-                Authenticate::class,
-            ]);
     }
 }

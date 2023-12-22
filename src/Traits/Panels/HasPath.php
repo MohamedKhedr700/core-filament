@@ -43,6 +43,6 @@ trait HasPath
      */
     public function getForPath(string $module, string $dir = ''): string
     {
-        return 'Modules\\'.$module.'\\'.$this->forPath()."\\".$dir;
+        return 'Modules\\'.$module.'\\'.$this->forPath().'\\'.$dir;
     }
 }
