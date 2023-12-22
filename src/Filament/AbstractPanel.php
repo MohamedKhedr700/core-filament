@@ -33,32 +33,30 @@ abstract class AbstractPanel extends PanelProvider
     {
         $this->discoverPanel($panel);
 
-        $this->withDefaultColor();
+        $this->withDefaultColor($panel);
 
-        $this->withDefaultPages();
+        $this->withDefaultPages($panel);
 
-        $this->withDefaultWidgets();
+        $this->withDefaultWidgets($panel);
 
-        $this->withDefaultMiddleware();
+        $this->withDefaultMiddleware($panel);
 
-        $this->withDefaultAuthMiddleware();
+        $this->withDefaultAuthMiddleware($panel);
 
-        return $this->getPanel();
+        return $panel;
     }
 
     /**
      * Discover the panel resources.
      */
-    public function discoverPanel(Panel $panel): static
+    public function discoverPanel(Panel $panel): Panel
     {
-        $this->setPanel($panel);
-
         $this->discoverResources($panel);
 
         $this->discoverPages($panel);
 
         $this->discoverWidgets($panel);
 
-        return $this;
+        return $panel;
     }
 }

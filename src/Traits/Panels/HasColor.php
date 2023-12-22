@@ -10,9 +10,9 @@ trait HasColor
     /**
      * Set panel default color.
      */
-    public function withDefaultColor(): static
+    public function withDefaultColor(Panel $panel): static
     {
-        $this->getPanel()->colors([
+        $panel->colors([
             'primary' => Color::Amber,
         ]);
 

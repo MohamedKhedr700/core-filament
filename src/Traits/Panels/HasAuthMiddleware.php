@@ -3,15 +3,16 @@
 namespace Raid\Core\Filament\Traits\Panels;
 
 use Filament\Http\Middleware\Authenticate;
+use Filament\Panel;
 
 trait HasAuthMiddleware
 {
     /**
      * Add auth middleware to the panel.
      */
-    public function withDefaultAuthMiddleware(): static
+    public function withDefaultAuthMiddleware(Panel $panel): static
     {
-        $this->getPanel()->authMiddleware([
+        $panel->authMiddleware([
             Authenticate::class,
         ]);
 

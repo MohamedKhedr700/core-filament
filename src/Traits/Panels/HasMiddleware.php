@@ -4,6 +4,7 @@ namespace Raid\Core\Filament\Traits\Panels;
 
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Panel;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
@@ -17,9 +18,9 @@ trait HasMiddleware
     /**
      * Add middleware to the panel.
      */
-    public function withDefaultMiddleware(): static
+    public function withDefaultMiddleware(Panel $panel): static
     {
-        $this->getPanel()->middleware([
+        $panel->middleware([
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,

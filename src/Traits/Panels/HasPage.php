@@ -3,15 +3,16 @@
 namespace Raid\Core\Filament\Traits\Panels;
 
 use Filament\Pages;
+use Filament\Panel;
 
 trait HasPage
 {
     /**
      * Add a page to the panel.
      */
-    public function withDefaultPages(): static
+    public function withDefaultPages(Panel $panel): static
     {
-        $this->getPanel()->pages([
+        $panel->pages([
             Pages\Dashboard::class,
         ]);
 
