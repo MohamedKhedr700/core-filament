@@ -14,7 +14,6 @@ trait HasWidget
     {
         $panel->widgets([
             Widgets\AccountWidget::class,
-            Widgets\FilamentInfoWidget::class,
         ]);
 
         return $this;
