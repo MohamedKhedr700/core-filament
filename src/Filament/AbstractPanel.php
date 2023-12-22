@@ -43,7 +43,7 @@ abstract class AbstractPanel extends PanelProvider
 
         $this->withDefaultAuthMiddleware();
 
-        return $this;
+        return $this->getPanel();
     }
 
     /**
