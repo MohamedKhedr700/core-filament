@@ -31,9 +31,9 @@ class AbstractPanel extends PanelProvider
     use HasPath;
 
     /**
-     * Prepare the panel.
+     * Discover the panel resources.
      */
-    public function defaultPanel(Panel $panel): Panel
+    public function discoverPanel(Panel $panel): Panel
     {
         $this->setPanel($panel);
 
