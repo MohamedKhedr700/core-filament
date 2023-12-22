@@ -11,7 +11,7 @@ trait HasAuthMiddleware
      */
     public function withDefaultAuthMiddleware(): static
     {
-        $this->panel()->middleware([
+        $this->getPanel()->middleware([
             Authenticate::class,
         ]);
 

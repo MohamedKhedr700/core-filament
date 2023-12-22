@@ -14,7 +14,7 @@ use Raid\Core\Filament\Traits\Panels\HasPanel;
 use Raid\Core\Filament\Traits\Panels\HasPath;
 use Raid\Core\Filament\Traits\Panels\HasWidget;
 
-class AbstractPanel extends PanelProvider
+abstract class AbstractPanel extends PanelProvider
 {
     use HasAuthMiddleware;
     use HasColor;

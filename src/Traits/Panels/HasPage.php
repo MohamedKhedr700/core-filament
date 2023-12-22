@@ -11,7 +11,7 @@ trait HasPage
      */
     public function withDefaultPages(): static
     {
-        $this->panel()->pages([
+        $this->getPanel()->pages([
             Pages\Dashboard::class,
         ]);
 

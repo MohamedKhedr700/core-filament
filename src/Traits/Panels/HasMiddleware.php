@@ -19,7 +19,7 @@ trait HasMiddleware
      */
     public function withDefaultMiddleware(): static
     {
-        $this->panel()->middleware([
+        $this->getPanel()->middleware([
             EncryptCookies::class,
             AddQueuedCookiesToResponse::class,
             StartSession::class,

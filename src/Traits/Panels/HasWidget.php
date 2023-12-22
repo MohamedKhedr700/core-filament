@@ -11,7 +11,7 @@ trait HasWidget
      */
     public function withDefaultWidgets(): static
     {
-        $this->panel()->widgets([
+        $this->getPanel()->widgets([
             Widgets\AccountWidget::class,
             Widgets\FilamentInfoWidget::class,
         ]);

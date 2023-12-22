@@ -12,7 +12,7 @@ trait HasColor
      */
     public function withDefaultColor(): static
     {
-        $this->panel()->colors([
+        $this->getPanel()->colors([
             'primary' => Color::Amber,
         ]);
 

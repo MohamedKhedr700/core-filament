@@ -22,7 +22,7 @@ trait HasPanel
     /**
      * Get a panel.
      */
-    public function panel(): Panel
+    public function getPanel(): Panel
     {
         return $this->panel;
     }
